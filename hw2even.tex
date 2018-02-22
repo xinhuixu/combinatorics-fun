@@ -1,0 +1,113 @@
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=(\alph*)}
+\setlist[enumerate,3]{label=(\roman*)}
+
+
+\DeclareMathOperator{\perm}{P}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\e}{\mathrm{e}}
+
+% To have all the question numbers be odd, we use an enumerate
+% environment to number the questions and, for every question after the
+% first, we begin a new question with
+% \stepcounter{enumi}
+% \item
+
+
+%--------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  \bfseries
+  Xinhui Xu\\
+  Homework 2, due February 16, 2018\\
+  Even numbered questions
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+\stepcounter{enumi}
+\item  Nine different people walk into a delicatessen to buy a sandwich. Three always
+order tuna fish, two always order chicken, two always order roast beef, and two
+order any of the three types of sandwich.
+    \begin{enumerate}
+        \item How many different sequences of sandwiches are possible?
+        \begin{enumerate}
+            \item We have 3T, 2C, 2B, and 2"any"; arrange them ($P(9;3,2,2,2)$ ways).
+            \item For each of the 2 "any", choose a type ($3*3$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=\frac{9!}{3!2!2!2!}(3)(3)$ ways.}}
+        \end{enumerate}
+        
+        \item How many different (unordered) collections of sandwiches are possible?
+        \begin{enumerate}
+            \item We can have either 0, 1, or 2 chicken sandwiches within the collection. So we can have 0-3T, then 0-2C, then 0-2B ($(4)(3)(3)$ ways).
+            \item Then we choose how many "any", and what type can each be ($1+3+\binom32)$ ways, 0 "any" counts as 1 way).
+            \item \fbox{\parbox{\linewidth}{Total$=(4)(3)(3)(1+3+\binom32)=252$ ways.}}
+        \end{enumerate}
+    \end{enumerate}
+\stepcounter{enumi}
+\item In an international track competition, there are 5 United States athletes, 4
+Russian athletes, 3 French athletes, and 1 German athlete. How many rankings
+of the 13 athletes are there when:
+    \begin{enumerate}
+        \item  Only nationality is counted?
+        \begin{enumerate}
+            \item We have 5U, 4R, 3F, 1G, arrange them.
+            \item \fbox{\parbox{\linewidth}{Total$=P(13;5;4;3;1)=\frac{13!}{5!4!3!1!}$ ways.}}
+        \end{enumerate}
+        
+        \item Only nationality is counted and all the U.S. athletes finish ahead of all the
+Russian athletes?
+        \begin{enumerate}
+            \item Consider the U.S. and Russian athletes as a single type (UR), then arrange them with the rest of the athletes. For all the arrangements, we will assume the UR type objects appear in UUUUURRRR order. 
+            \item \fbox{\parbox{\linewidth}{Total$=P(13;9,3,1)=\frac{13!}{9!3!1!}$ ways.}}
+        \end{enumerate}
+    \end{enumerate}
+\stepcounter{enumi}
+\item \begin{enumerate}
+    \item How many distributions of 21 different objects into three different boxes are
+there with twice as many objects in one box as in the other two combined?
+    \begin{enumerate}
+        \item Since the boxes are distinct, choose the "big" box (3 ways).
+        \item Let $n$ be the combined number of objects in the two smaller boxes, big box should have $2n$ objects. The only way we can have this distribution is when $n+2n=21,n=7$.
+        \item Choose 7 objects to be in the two smaller boxes ($C(21,7)$ ways).
+        \item Give each of the 7 objects a label like "small box 1" or "small box 2" ($2^7$ ways).
+        \item \fbox{\parbox{\linewidth}{Total$=(3)\binom{21}{7}2^7$ ways.}}
+    \end{enumerate}
+\end{enumerate}
+
+\stepcounter{enumi}
+\pagebreak
+\item How many ways are there to distribute three different teddy bears and nine
+identical lollipops to four children:
+    \begin{enumerate}
+        \item Without restriction?
+        \begin{enumerate}
+            \item Give each of the three teddy bears a children label ($4^3$ ways).
+            \item Distribute the 9 lollipops ($C(9+4-1,4-1)$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=4^3\binom{12}{3}$ ways.}}
+        \end{enumerate}
+        \item With no child getting two or more teddy bears?
+        \begin{enumerate}
+            \item Among the 4 children, 3 must get one teddy bear; Choose the 3 children ($C(4,3)$ ways).
+            \item Choose what bear the first, second, and third child gets ($3!$ ways).
+            \item Distribute the 9 lollipops ($C(9+4-1,4-1)$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=\binom433!\binom{12}{3}$}}
+        \end{enumerate}
+        \item With each child getting three “goodies”?
+        \begin{enumerate}
+            \item Give each of three teddy bears a children label ($4^3$ ways). Since there are only three teddy bears, 1 child cannot get more than 3 goodies from this.
+            \item Distribute the lollipops so that children without 3 things gets 3 things (1 way).
+            \item \fbox{\parbox{\linewidth}{Total$=4^3$ ways.}}
+        \end{enumerate}
+    \end{enumerate}
+    
+
+\end{enumerate}
+
+\end{document}
