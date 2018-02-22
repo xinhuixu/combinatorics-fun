@@ -1,0 +1,93 @@
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=(\alph*)}
+\setlist[enumerate,3]{label=(\roman*)}
+
+
+\DeclareMathOperator{\perm}{P}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\e}{\mathrm{e}}
+
+% To have all the question numbers be odd, we use an enumerate
+% environment to number the questions and, for every question after the
+% first, we begin a new question with
+% \stepcounter{enumi}
+% \item
+
+
+%--------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  \bfseries
+  Xinhui Xu\\
+  Homework 3, due February 23, 2018\\
+  Odd numbered questions
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+\item  Build a generating function for $a_r$, the number of distributions of $r$ identical
+objects into:
+    \begin{enumerate}
+    \item Five different boxes with at most five objects in each box. \\
+    \fbox{\parbox{\linewidth}{$g(x)=(1+x+x^2+x^3+x^4+x^5)^5$}}
+    \item Four different boxes with between three and six objects in each box.\\
+    \fbox{\parbox{\linewidth}{$g(x)=(x^3+x^4+x^5+x^6)^4$}}
+    \item Seven different boxes with at least one object in each box.\\
+    \fbox{\parbox{\linewidth}{$g(x)=(x+x^2+x^3+...)^7$}}
+    \item Three different boxes with at most five objects in the first box.\\
+    \fbox{\parbox{\linewidth}{$g(x)=(1+x+x^2+x^3+x^4+x^5)(1+x+x^2+x^3+...)^2$}}
+    \end{enumerate}
+\stepcounter{enumi}
+\item  Build a generating function for $a_r$, the number of integer solutions to the equations:
+    \begin{enumerate}
+        \item $e_1 + e_2 + e_3 + e_4 + e_5 = r, 0 \leq e_i \leq 4$\\
+        \fbox{\parbox{\linewidth}{$g(x)=(1+x+x^2+x^3+x^4)^5$}}
+\item $e_1 + e_2 + e_3 = r, 0 < e_i < 5$\\
+    \fbox{\parbox{\linewidth}{$g(x)=(x+x^2+x^3+x^4)^3$}}
+\item $e_1 + e_2 + e_3 + e_4 = r, 2 \leq e_i \leq 6, e_1 even, e_2 odd$\\
+    \fbox{\parbox{\linewidth}{$g(x)=(x^2+x^4+x^6)(x^3+x^5)(x^2+x^3+x^4+x^5+x^6)^2$}}
+\item $e_1 + e_2 + e_3 + e_4 = r, 0 \leq e_i$\\
+    \fbox{\parbox{\linewidth}{$g(x)=(1+x+x^2+x^3+...)^4$}}
+\item $e_1 + e_2 + e_3 + e_4 = r, 0 < e_i, e_2, e_4 odd, e_4 \leq 3$\\
+    \fbox{\parbox{\linewidth}{$g(x)=(x+x^3+x^5+...)(x+x^3)(x+x^2+x^3+...)^2$}}
+    \end{enumerate}
+    
+\stepcounter{enumi}
+\item Find a generating function for $a_r$, the number of ways a roll of six distinct dice can show a sum of $r$ if the first three dice are odd and the second three even.
+    \fbox{\parbox{\linewidth}{$g(x)=(x+x^3+x^5)^3(x^2+x^4+x^6)^3$}}
+
+\stepcounter{enumi}
+    \item Find the coefficient of $x^{18}$ in $(x+x^2+x^3+x^4+x^5)(x^2+x^3+x^4+...)^5$.
+    \begin{enumerate}
+        \item Factor out $x^2$ from right: $x^2(x+x^2+x^3+x^4+x^5)(1+x+x^2+...)^5$
+        \item Factor out $x$ from left: $x^2x(1+x+x^2+x^3+x^4)(1+x+x^2+...)^5$
+        \item Simplify: $x^3(\frac{1-x^5}{1-x})(\frac{1}{1-x})^5$
+        \item Multiply: $(x^3-x^8)\frac{1}{(1-x)^6}$
+        \item Expand right: $(x^3-x^8)(1+\binom{1+6-1}{1}x+\binom{2+6-1}{2}x^2+...)$
+        \item Distribute: $(x^3+\binom{1+6-1}{1}x^4+\binom{2+6-1}{2}x^5+...)-(x^8+\binom{1+6-1}{1}x^9+\binom{2+6-1}{2}x^10+...)$ Term $x^r_{left}=\binom{(r-3)+6-1}{1}x^r$, term $x^r_{right}=\binom{(r-8)+6-1}{1}x^r$
+        \item $a_r=\binom{(r-3)+6-1}{1}-\binom{(r-8)+6-1}{1}$
+        \item \fbox{\parbox{\linewidth}{$a_{18}=\binom{(18-3)+6-1}{1}-\binom{(18-8)+6-1}{1}=20-15=5$}}
+    \end{enumerate}
+
+\newpage
+\stepcounter{enumi}
+\item Use generating functions to find the number of ways to distribute $r$ jelly beans among eight children if each child gets at least one jelly bean.
+\begin{enumerate}
+    \item Let $g(x)=(x+x^2+x^3+...)^8$ compute $a_r$
+    \item Factor out x: $x(1+x+x^2+...)^8$
+    \item Simplify right: $x(\frac{1}{1-x})^8$
+    \item Expand right: $x(1+\binom{1+8-1}{1}x+\binom{2+8-1}{2}x^2+...)=(x+\binom{1+8-1}{1}x^2+\binom{2+8-1}{2}x^3+...)$
+    \item Term $x^r=\binom{(r-1)+8-1}{1}x^r$
+    \item \fbox{\parbox{\linewidth}{Number of ways=$a_r=\binom{(r-1)+8-1}{1}$}}
+\end{enumerate}
+
+    
+    
+\end{enumerate}
+\end{document}
