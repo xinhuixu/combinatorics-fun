@@ -1,0 +1,113 @@
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage{pbox}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=(\alph*)}
+\setlist[enumerate,3]{label=(\roman*)}
+
+
+\DeclareMathOperator{\perm}{P}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\e}{\mathrm{e}}
+
+
+
+
+%--------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  \bfseries
+  Xinhui Xu\\
+  MATH225 Homework 1 (Even), due Friday February 9, 2018
+\end{center}
+
+\begin{enumerate}
+\stepcounter{enumi}
+\item How many ways are there to pick 2 different cards from a standard 52-card deck
+such that
+    \begin{enumerate}
+        \item  The first card is an Ace and the second card is not a Queen?
+            \begin{enumerate}
+                \item Pick first card; 4 Aces in deck = 4 possibilities,
+                \item Pick 2nd card; 51 cards remaining, containing 4 Queens = $(51-4)$ possibilities,
+                \item \fbox{\parbox{\linewidth}{There are $(4)(51-4)$ ways.}}
+            \end{enumerate}
+        \item The first card is a spade and the second card is not a Queen? (Hint: Watch
+out for the Queen of spades.)
+            \begin{enumerate}
+                \item \emph{Case 1:} Pick first card that is Queen of spades; 1 possibility,
+                \item Pick 2nd card; 51 cards remaining, containing 3 Q's = $(51-3)$ possibilities,
+                \item \emph{Case 2:} Pick first card that is spades but not Q; $13-1$ possibilities,
+                \item Pick 2nd card; 51 cards remaining, containing 4 Q's = 51-4 possibilities,
+                \item Add number of ways from case 1 and case 2 together by addition principle,
+                \item \fbox{\parbox{\linewidth}{There are $1(51-3)+(13-1)(51-4)$ ways.}}
+                
+            \end{enumerate}
+    \end{enumerate}
+
+
+
+\stepcounter{enumi}
+\item \begin{enumerate}\item How many ways are there for a man to invite some (nonempty) subset of his
+10 friends to dinner?
+        \begin{enumerate}
+        \item Let $n$ be the number of friends he chooses to invite, which can be an integer from 1 to 10.
+        \item For every group of $n$ friends there are $C(10, n)$ combinations of them,
+        \item Since each combination is a unique outcome, by the addition principle,
+        \item \fbox{\parbox{\linewidth}{There are $\binom{10}{10}+\binom{10}{9}+\binom{10}{8}+\binom{10}{7}+\binom{10}{6}+\binom{10}{5}+\binom{10}{4}+\binom{10}{3}+\binom{10}{2}+\binom{10}{1}$ or $\sum\limits_{i=1}^{10} \binom{10}{i}$ ways.}}
+        \end{enumerate}
+    \end{enumerate} 
+    
+\stepcounter{enumi}
+\item \begin{enumerate}
+    \item How many triangles are formed by
+pieces of $n$ nonparallel lines, assuming
+no three lines cross at a point; for example
+the four lines at the right form
+four triangles: $acd$, $abf$, $efd$, and $ebc$?\\
+    \emph{\underline{Method one:}}
+    \begin{enumerate}
+        \item For all $n$ number of lines, an intersection is defined by two and only two lines crossing because we assume that no three lines can cross at a point.
+        \item The number of intersections is therefore $\binom{n}{2}$.
+        \item To define a triangle, we first choose a intersection point of 2 of the $n$ lines; $\binom{n}{2}$ possibilities,
+        \item Choose a line, which cannot be the 2 lines that formed the chosen intersection, to complete the triangle; $(n-2)$ possibilities;
+
+        \item Multiplying these will give us:\\
+        number of possible combinations of (an intersection point) and (a line opposite that point) which forms a triangle.
+        \item However, a triangle formed by choosing point, say, $a$ then line $\overline{bc}$ is the same as the triangle formed by choosing point $b$ then line $\overline{ac}$, and the triangle formed by choosing point $c$ then line $\overline{ab}$. In general,there are three point-line combinations that corresponds to the same triangle. In other words, we counted each possible triangle three times.
+        \item This means that we should divide the result from (v) by 3.
+        \item \fbox{\parbox{\linewidth}{Total triangles for $n\geq2$ parallel lines=\\
+            \begin{displaymath}
+            \frac{\binom{n}{2}(n-2)}{3}
+            \end{displaymath}
+        }}
+        
+    \end{enumerate}
+    \emph{\underline{Method two:}}
+    \begin{enumerate}
+        \item Choose three lines from all lines. Since they are non parallel and don't intersect at the same point, each three-line combination makes a unique triangle;\\ \fbox{\parbox{\textwidth}{Total triangles = $C(n, 3)$ }}
+    \end{enumerate}
+\end{enumerate}
+
+\stepcounter{enumi}
+\item \begin{enumerate}
+    \item How many 6-letter sequences are there with at least 3 vowels (A, E, I, O, U)?
+No repetitions are allowed.
+    \begin{enumerate}
+        \item \emph{Case 1:} Choose 3 vowels; $\binom53$ ways, then choose where they go; $\binom63$ ways, then choose next 3 non-vowels; (21)(20)(19) ways,
+        \item \emph{Case 2:} Choose 4 vowels; $\binom54$ ways, then choose where they go; $\binom64$ ways, then choose next 2 non-vowels; (21)(20) ways,
+        \item \emph{Case 3:} Choose 5 vowels; $\binom55 = 1$ way, then choose where they go; $\binom65$ ways, then choose non-vowel; 21 ways.
+        \item Add together by addition principle: \\ 
+        \fbox{\parbox{\linewidth}{$\binom53\binom63(21)(20)(19) + \binom54\binom64(21)(20) + \binom55\binom65(21)$ sequences.}}
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+\end{document}
