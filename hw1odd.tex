@@ -1,0 +1,129 @@
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage{pbox}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=(\alph*)}
+\setlist[enumerate,3]{label=(\roman*)}
+
+\usepackage[margin=1.2in]{geometry}
+
+
+
+\DeclareMathOperator{\perm}{P}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\e}{\mathrm{e}}
+
+
+
+
+%--------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  \bfseries
+  Xinhui Xu\\
+  MATH225 Homework 1 (Odd), due Friday February 9, 2018
+\end{center}
+
+
+\begin{enumerate}
+
+    \item   
+      \begin{enumerate}
+      \item How many five-letter “words” (sequence of any five letters with repetition) are
+    there?
+        \begin{enumerate}
+        \item Choose 1st letter; 26 possibilities,
+        \item Choose the next 4 letters; each has 26 possibilities,
+        \item \fbox{%
+            \parbox{\linewidth}{%
+                There are $26^5$ sequences.}}   
+        \end{enumerate}
+      \item How many with no repeated letters?
+        \begin{enumerate}
+            \item Choose 1st letter; 26 possibilities,
+            \item Choose 2nd letter; $26-1$ pos. since 1 letter is taken,
+            \item Each succeeding letter has 1 less pos. than previous,
+            \item \fbox{\parbox{\linewidth}{There are $(26)(25)(24)(23)(22)=\perm(26,5)$ sequences.}}
+        \end{enumerate}
+            
+      \end{enumerate}
+
+\stepcounter{enumi}
+\item
+  \begin{enumerate}
+  \item How many election outcomes are possible with 20 people each voting for
+one of seven candidates (the outcome includes not just the totals but also
+who voted for each candidate)?
+    \begin{enumerate}
+        \item Consider 20 slots representing 20 people. Pick candidate to fill the first slot; C(7,1) possibilities,
+        \item Pick candidate to fill each of the remaining 19 slots; C(7,1) possibilities each,
+        \item \fbox{\parbox{\linewidth}{There are $C(7,1)^{20} = 7^{20}$ ways.}}
+    \end{enumerate}
+  \item How many election outcomes are possible if exactly one person votes for
+candidate A and exactly one person votes for candidate D?
+    \begin{enumerate}
+        \item Choose 1 slot to contain candidate A; C(20,1) possibilities,
+        \item Choose 1 slot from the remaining 19 to contain candidate D; C(19,1) possibilities,
+        \item The remaining 18 slots can be filled with candidates not A and D; C(7-2,1) possibilities each,
+        \item \fbox{\parbox{\linewidth}{There are $\binom{20}{1}\binom{19}{1}\binom{7-2}{1}^{18}=20*19*5^{18}$ ways.}}
+    \end{enumerate}
+  \end{enumerate}
+
+
+\stepcounter{enumi}
+\item \begin{enumerate}
+    \item How many 5-letter sequences (formed from the 26 letters in the alphabet, with
+repetition allowed) contain exactly one A and exactly two Bs?
+        \begin{enumerate}
+            \item Choose 1 slot to contain A; C(5,1) possibilities,
+            \item From the remaining 4 slots, choose 2 to contain B; C(4,2) possibilities,
+            \item For each of the remaining 2 slots, choose a letter that's not A and not B; 26-2 possibilities each,
+            \item \fbox{\parbox{\linewidth}{There are $\binom{5}{1}\binom{4}{2}(26-2)^2$ ways.}}
+        \end{enumerate}
+\end{enumerate}
+
+
+\stepcounter{enumi}
+\item\begin{enumerate}
+    \item  A student must answer 5 out of 10 questions on a test, including at least 2 of
+the first 5 questions. How many subsets of 5 questions can be answered?
+    \begin{enumerate}
+        \item \emph{Case 1:} Chooses 2 questions from first five; $\binom{5}{2}$ ways, then chooses 3 questions from last five; $\binom{5}{3}$ ways.
+        \item \emph{Case 2:} Chooses 3 questions from first five; $\binom{5}{3}$ ways, then chooses 2 questions from last five; $\binom{5}{2}$ ways.
+        \item \emph{Case 3:} Chooses 4 questions from first five; $\binom{5}{4}$ ways, then chooses 1 question from last five; $\binom{5}{1}$ ways.
+        \item \emph{Case 4:} Chooses 5 questions from first five; $\binom{5}{5}$ ways, then chooses 0 question from last five; $\binom{5}{0}$ ways.
+        \item Using the addition principle we can add all 4 cases:\\
+        \fbox{\parbox{\linewidth}{There are $\binom52\binom53+\binom53\binom52+\binom54\binom51+\binom55\binom50$ ways.}}
+    \end{enumerate}
+\end{enumerate}
+\stepcounter{enumi}
+\item \begin{enumerate}
+    \item How many ways are there to arrange n (distinct) people in a straight line so that: Mr. and Mrs.Smith are side by side;
+        \begin{enumerate}
+            \item Group Mr. and Mrs.Smith into one person, now there are $n-1$ people,
+            \item There are 2 ways Mr. and Mrs.Smith can be side by side,
+            \item and there are $(n-1)!$ ways to arrange $n-1$ distinct people,
+            \item \fbox{\parbox{\linewidth}{Total: $2 * (n-1)! $ ways}}
+        \end{enumerate}
+                
+     \item Mrs. Tucker is k positions away from the Smiths (i.e., $k - 1$ people between Mrs. Tucker and the Smiths)
+        \begin{enumerate}
+            \item Consider just the case where Tucker sits k positions to the right of Smiths. Group (Tucker..(k-1 people)..Smiths) into one object, and now there are $n-k-1$ objects. For example:\\
+            ($n=7,k=2$) [S s {\_} T] [{\_}] [{\_}] [{\_}]\\
+            $7-2-1=4$ objects, 1 (T...Ss) and 3 open slots.
+            \item There are $P(4;1,3)= \frac{4!}{1!3!}=4$ ways to arrange them. Or, in general, $P((n-k-1);1,(n-k-2))=(n-k-1)$ ways.
+            \item The total number of open slots is $n-3$, which means there are $(n-3)!$ arrangements of non-Tucker-Smiths.
+            \item Choose how the Smiths are seated; 2 ways.
+            \item Choose if Tucker sits to the left or right of the Smiths; 2 ways.
+            \item \fbox{\parbox{\linewidth}{Total: $(2)(2)(n-k-1)(n-3)!$ ways}}
+        \end{enumerate}
+
+    
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
