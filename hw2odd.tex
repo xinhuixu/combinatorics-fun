@@ -1,0 +1,119 @@
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=(\alph*)}
+\setlist[enumerate,3]{label=(\roman*)}
+
+
+\DeclareMathOperator{\perm}{P}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\e}{\mathrm{e}}
+
+% To have all the question numbers be odd, we use an enumerate
+% environment to number the questions and, for every question after the
+% first, we begin a new question with
+% \stepcounter{enumi}
+% \item
+
+
+%--------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  \bfseries
+  Xinhui Xu\\
+  Homework 2, due February 16, 2018\\
+  Odd numbered questions
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+\item There are three women and five men who will split up into two four-person
+teams. How many ways are there to do this so that there is at least one woman
+on each team?
+  \begin{enumerate}[label=(\roman*)]
+  \item Since the only way to have at least one woman on each team is to have a team with 1 woman and the other team with 2, we'll choose the woman to be in team A ($\binom31$ ways).
+  \item We will choose the other 3 members of team A from the remaining $8-3=5$ people ($\binom53$ ways).
+  \item Since team B is determined by team A, \\
+    \fbox{\parbox{\linewidth}{total$=\binom31\binom53$ ways.}}
+  \end{enumerate}
+
+\stepcounter{enumi}
+\item How many ways are there to distribute 5 identical apples and 6 identical pears
+to 3 distinct people such that each person has at least one pear?
+    \begin{enumerate}
+        \item Distribute 1 pear to each of the 3 people (1 way).
+        \item Distribute the 5 apples ($C(5+3-1, 3-1)=\binom72$ ways).
+        \item Distribute the 3 remaining pears ($C(3+3-1, 3-1)=\binom52$ ways).
+        \item \fbox{\parbox{\linewidth}{Total$=\binom72\binom52$ ways.}}
+    \end{enumerate}
+
+
+\stepcounter{enumi}
+\item How many ways are there to distribute 16 different toys among four children?
+    \begin{enumerate}
+    \item Without restrictions?
+        \begin{enumerate}
+            \item Give each toy a label like "Child A".
+            \item \fbox{\parbox{\linewidth}{Total$=4^{16}$ ways.}}
+        \end{enumerate}
+    \item If two children get 6 toys and two children get 2 toys?
+        \begin{enumerate}
+            \item Choose which 2 children get 6 toys ($C(4,2)$ ways).
+            \item Choose which 12 toys the 2 children get ($C(16,12)$ ways).
+            \item Choose the 6 toys for one of the children ($C(12,6)$ ways).
+            \item For the two children that get 2 toys, choose 2 toys for one of the children ($C(4,2)$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=\binom42\binom{16}{12}\binom{12}{6}\binom42$ ways.}}
+        \end{enumerate}
+    \item  With each child getting 4 toys?
+        \begin{enumerate}
+            \item Choose which 4 toys the first child gets ($\binom{16}{4}$ ways).
+            \item Choose which 4 toys the second child gets ($\binom{12}{4}$ ways).
+            \item Choose which 4 toys the third child gets ($\binom{8}{4}$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=\binom{16}{4}\binom{12}{4}\binom{8}{4}$ ways.}}
+        \end{enumerate}
+    \end{enumerate}
+
+
+\stepcounter{enumi}
+\item How many integer solutions are there to x1 + x2 + x3 + x4 + x5 = 28 with:
+    \begin{enumerate}
+        \item $x_i\geq0: $ \begin{enumerate}
+            \item Distribute 28 1's to 5 variables.
+            \item \fbox{\parbox{\linewidth}{Total$=C(28+5-1,5-1)=C(32, 4)$ ways.}}
+        \end{enumerate}
+        \item $x_i>0: $ \begin{enumerate}
+            \item Distribute a 1 to 5 variables (1 way).
+            \item Distribute 28-5 1's to 5 variables ($C(28-5+5-1, 5-1)$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=C(27, 4)$ ways.}}
+        \end{enumerate}
+    \end{enumerate}
+    
+\stepcounter{enumi}
+\item How many arrangements of the letters in INSTRUCTOR have all of the following
+properties simultaneously: (V:[I,O,U] C:[N,S,T,R,C,T,R]=[1N,2R,2T,1S,1C]) 
+    \begin{enumerate}
+        \item  The vowels appearing in alphabetical order.
+        \item At least 2 consonants between each vowel, and
+        \item Begin or end with the 2 T’s (the T’s are consecutive)
+        \begin{enumerate}
+            \item Choose if TT is at beginning or end (2 ways). 
+            \item Put two empty slots between IOU to get I\textunderscore\textunderscore O\textunderscore\textunderscore U, and choose where the remaining empty slot is (4 ways: left of I, between IO, between OU, and right of U).
+            \item We have 5 consonants [1N,2R,1S,1C], order them and place them into the slots ($P(5;2,1,1,1)=\frac{5!}{2!}$ ways).
+            \item \fbox{\parbox{\linewidth}{Total$=(2)(4)(\frac{5!}{2!})$ ways.}}
+
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
